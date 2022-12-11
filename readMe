@@ -1,0 +1,22 @@
+Web app to check domain security info
+
+done with backend in Nodejs, express router, frontend in ejs, and Mongodb database
+
+Backend app contains router that uses mongoose to save or find domains according to user's requests
+
+Backend also contains function that runs every month and goes over all domains in db and cheks 
+their security data using two external apis (whois and nvt)
+when finds security data for every domain, updates it to include that data in db
+then next time user checks for the domain, they will see the data
+
+backend also logs every request
+
+all backend and frontend files contained within nodedocker_app folder, with dockerfile to set it up for deployment
+project also contains nginx folder to set up nginx for deployment,
+and docker-compose file to deploy nodejs, nginx and mongodb
+
+db collections folder contains collections used in mongodb while testing app
+
+to make the app more scalable, app could be split to two services, one containing the router and one containing the scheduled domain checks
+they can communicate through docker-compose settings
+

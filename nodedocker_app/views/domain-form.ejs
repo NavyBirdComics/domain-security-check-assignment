@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Security Check</title>
+    <link rel="stylesheet" href="../public/style-sheet.css">
+</head>
+
+<!-- 
+    domain-form page can be used in check mode and add mode
+    in check mode, will show 'check' and post to '/' route
+    in add mode, will show 'add' and post to '/addDomain' route
+    will display error or success messages if they were posted
+    form to get and send domain, value will be set as posted value if exists
+    before posting the form, javascript runs to validate value
+    if there is domainData (successfully posted checked domain),
+    will insert all domainData into array and iterate over array to generate table with results
+    contains navbar component to navigate between pages
+ -->
+<body>
+    <div class="main-content-container">
+        <h1><%= page %> a domain:</h1>
+        <br />
+        <!-- display error and success messages if they exist -->
+    <div id="error"><%= locals.error ? error  : ""%></div>
+    <div id="success"><%= locals.success ? success  : ""%></div>
+    <br/>
+        <form action="/<%= page == 'add' ? 'addDomain' : '' %>" method="post" id="form">
+            <input type="text" name="domain" id="domain" placeholder="<%= page %> a domain..." value="<%= locals.domain ? domain : '' %>" required  /><br /><br />
+            <br />
+            <input type="submit" value="<%= page %> domain" /><br /><br />
+        </form>
+        <br/>
+        <% if(locals.domainData) { %>
+            <h3>Your domain data is: </h3>
+            <br/>
+            <% var listData = Object.entries(domainData._doc.whoisCheck)
+            listData = listData.concat(Object.entries(domainData._doc.nvtRes.data.attributes), Object.entries(domainData._doc.nvtRes.data.links))
+            for (var i = 0; i < listData.length; i++) {
+                listData[i][1] = JSON.stringify(listData[i][1]);
+            } 
+            listData.push(["id",domainData._doc.nvtRes.data.id])
+            listData.push(["type",domainData._doc.nvtRes.data.type])
+            %>
+            <table>
+                <% listData.forEach((row) =>  {  %>
+                    <tr>
+                        <th>
+                            <%= row[0] %>
+                        </th>
+                        <td>
+                            <%= row[1] %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+            <br/>
+            <br/>
+        <% }%>
+        <%- include('navbar') %>
+    </div>
+</body>
+
+<script>
+    //getting variable to validate and post by id
+    const domain = document.getElementById("domain");
+    
+    //prevent automatic post in case of error and do validation
+    const form = document.getElementById("form");
+    const errorElem = document.getElementById("error");
+    form.addEventListener("submit", (e) => {
+        let message = ""
+
+        
+        if (domain.value === '' || domain.value == null || !validateDomain(domain.value))
+        {
+            message = "Please enter a domain in the correct format.";
+        }
+      
+
+        if (message != "") {
+            e.preventDefault();
+            errorElem.innerText = message;
+        }
+    })
+
+    //using regex to validate domain
+    const validateDomain = (domain) => {
+        return domain.match(
+          /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})$/
+        );
+      };
+</script>
+</html>

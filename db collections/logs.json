@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "639656a0adadfd6c225332f1"
+  },
+  "method": "POST",
+  "when": {
+    "$date": {
+      "$numberLong": "1670796954704"
+    }
+  },
+  "path": "/",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639656a0adadfd6c225332f4"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670796954704"
+    }
+  },
+  "path": "/public/style-sheet.css",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639657769d99b83d65d5473b"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639657769d99b83d65d5473d"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/public/style-sheet.css",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6396577f9d99b83d65d5473f"
+  },
+  "method": "POST",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6396577f9d99b83d65d54744"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/public/style-sheet.css",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6396583d9d99b83d65d5474d"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6396583d9d99b83d65d5474f"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/public/style-sheet.css",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639658439d99b83d65d54751"
+  },
+  "method": "POST",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639658439d99b83d65d54754"
+  },
+  "method": "GET",
+  "when": {
+    "$date": {
+      "$numberLong": "1670797159414"
+    }
+  },
+  "path": "/public/style-sheet.css",
+  "__v": 0
+}]
